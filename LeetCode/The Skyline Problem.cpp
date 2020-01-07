@@ -12,7 +12,6 @@ public:
         int maxHeight = 0;
         for(auto &p : points) {
             if(p[1] < 0) {
-                // start point
                 if(-p[1] > maxHeight) {
                     maxHeight = -p[1];
                     skylines.push_back({ p[0], -p[1] });
@@ -20,7 +19,6 @@ public:
                 pq.insert(-p[1]);
             }
             else {
-                // end point
                 pq.erase(pq.find(p[1]));
                 int pqMax = *pq.rbegin();
                 if(pqMax < maxHeight) {
